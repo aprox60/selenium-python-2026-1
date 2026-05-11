@@ -11,7 +11,7 @@ class BasePage:
         return WebDriverWait(self.driver, self.timeout).until(EC.presence_of_element_located(locator))
 
     def click(self, locator):
-        self.find_element(locator).click()
+        WebDriverWait(self.driver, self.timeout).until(EC.element_to_be_clickable(locator)).click()
 
     def enter_text(self, locator, text):
         self.find_element(locator).send_keys(text)
